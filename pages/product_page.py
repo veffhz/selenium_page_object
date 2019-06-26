@@ -49,6 +49,14 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.ALERT_SUCCESS), \
             "Alert success is not presented"
 
+    def should_not_be_product_name_alert_success(self):
+        assert self.is_not_element_present(*ProductPageLocators.ALERT_SUCCESS), \
+            "Alert success is presented"
+
+    def should_be_disappeared_name_alert_success(self):
+        assert self.is_disappeared(*ProductPageLocators.ALERT_SUCCESS), \
+            "Alert success is not disappeared"
+
     def should_be_product_price_alert_info(self):
         assert self.is_element_present(*ProductPageLocators.P_ALERT_INFO), \
             "Alert info is not presented"
