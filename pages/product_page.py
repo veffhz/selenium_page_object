@@ -69,11 +69,11 @@ class ProductPage(BasePage):
             f"Product added text not eq: '{added_text}' '{div.text}'"
 
     def should_be_eq_product_price(self, price):
-        total_is_now = f"{ProductPageLocators.TOTAL_IS_NOW} {price}"
+        total_is_now_text = f"{ProductPageLocators.TOTAL_IS_NOW_TEXT} {price}"
 
         p = self.find(*ProductPageLocators.P_ALERT_INFO)
-        assert p.text == total_is_now, \
-            f"Price text not eq: '{total_is_now}' '{p.text}'"
+        assert p.text == total_is_now_text, \
+            f"Price text not eq: '{total_is_now_text}' '{p.text}'"
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert

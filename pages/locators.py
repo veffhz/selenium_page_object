@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 class BasePageLocators(object):
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    VIEW_CART_LINK = (By.CSS_SELECTOR, ".btn-group a.btn-default")
 
 
 class LoginPageLocators:
@@ -19,10 +20,15 @@ class ProductPageLocators:
     PRODUCT_PRICE = (By.CSS_SELECTOR, "div.product_main p.price_color")
 
     ADDED_TEXT = "has been added to your basket."
-    TOTAL_IS_NOW = "Your basket total is now"
+    TOTAL_IS_NOW_TEXT = "Your basket total is now"
 
-    #DIV_ALERT_SUCCESS = (By.CSS_SELECTOR, "div.alert.alert-success")
     ALERT_SUCCESS = (By.XPATH, f"//div[text()[contains(.,'{ADDED_TEXT}')]]")
+    P_ALERT_INFO = (By.XPATH, f"//div/p[text()[contains(.,'{TOTAL_IS_NOW_TEXT}')]]")
 
-    #DIV_ALERT_INFO = (By.CSS_SELECTOR, "div.alert.alert-info")
-    P_ALERT_INFO = (By.XPATH, f"//div/p[text()[contains(.,'{TOTAL_IS_NOW}')]]")
+
+class CartPageLocators:
+    EMPTY_BASKET_TEXT = "Your basket is empty."
+
+    EMPTY_BASKET_P = (By.CSS_SELECTOR, "#content_inner p")
+    NOT_EMPTY_CART = (By.CSS_SELECTOR, "#basket_formset")
+
