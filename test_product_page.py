@@ -1,3 +1,8 @@
+"""
+[PRODUCT_LINK, PRODUCT_LINK_2] - оставил обе ссылки для разных товаров,
+как было по заданию https://stepik.org/lesson/201964/step/3?unit=176022
+"""
+
 import pytest
 from .pages.product_page import ProductPage
 from .pages.cart_page import CartPage
@@ -5,6 +10,8 @@ from .pages.login_page import LoginPage
 from .urls import PRODUCT_LINK, PRODUCT_LINK_2, PRODUCT_LINK_3
 from .urls import offer_promo_links, PRODUCT_PROMO_BASE_LINK
 from .urls import BASE_LINK
+
+PASSWORD = "Test27!2019"
 
 
 @pytest.mark.login_user
@@ -14,9 +21,10 @@ class TestUserAddToCartFromProductPage:
         login_page = LoginPage(browser, BASE_LINK)
         login_page.open()
         login_page.go_to_login_page()
-        login_page.register_new_user(login_page.get_random_email(), "Test27!2019")
+        login_page.register_new_user(login_page.get_random_email(), PASSWORD)
         login_page.should_be_authorized_user()
 
+    @pytest.mark.need_review
     @pytest.mark.parametrize('link', [PRODUCT_LINK, PRODUCT_LINK_2])
     def test_user_can_add_product_to_cart(self, browser, link):
         page = ProductPage(browser, link)
@@ -33,6 +41,7 @@ class TestUserAddToCartFromProductPage:
         page.should_not_be_product_name_alert_success()
 
 
+@pytest.mark.need_review
 @pytest.mark.parametrize('link', [PRODUCT_LINK, PRODUCT_LINK_2])
 def test_guest_can_add_product_to_cart(browser, link):
     page = ProductPage(browser, link)
@@ -84,12 +93,14 @@ def test_guest_should_see_login_link_on_product_page(browser, ):
     page.should_be_login_link()
 
 
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, PRODUCT_LINK_3)
     page.open()
     page.go_to_login_page()
 
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_cart_opened_from_product_page(browser):
     page = ProductPage(browser, PRODUCT_PROMO_BASE_LINK)
     page.open()

@@ -18,5 +18,6 @@ sudo chown root:root /usr/bin/chromedriver
 sudo chmod +x /usr/bin/chromedriver
 ```
 
-##### run test:
+##### run tests:
 ```pytest -v --tb=line --language=en test_main_page.py```
+```pytest -v --tb=line --language=en test_product_page.py```

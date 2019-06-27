@@ -1,3 +1,8 @@
+"""
+Специально неправильный селектор registration_link
+вместо BasePageLocators.LOGIN_LINK в странице
+"""
+
 from .urls import PRODUCT_LINK_MAIN_PAGE as PRODUCT_LINK, BASE_LINK
 from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
